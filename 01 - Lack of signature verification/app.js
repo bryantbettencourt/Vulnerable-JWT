@@ -13,6 +13,7 @@ function generateAccessTokenFromKey(sub) {
     return jwt.sign(sub, privateKEY, { expiresIn: "12h", algorithm: 'RS256' })
 }
 
+// Read the bearer token before passing control to the route handler.
 function decodeToken(req, res, next) {
     const authHeader = req.headers["authorization"]
     const token = authHeader.split(" ")[1]
